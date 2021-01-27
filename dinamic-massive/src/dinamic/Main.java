@@ -1,15 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package dinamic;
 
-/**
- *
- * @author informatic
- */
+
 public class Main {
+    
+    public static void main(String[] args) {
+        
+        String[] mass = new String[] {"1","2","3"};
+        
+        for(int i=0; i < mass.length+1; i++) {
+            System.out.println(mass[i]);
+        }
+    }
     
 }
