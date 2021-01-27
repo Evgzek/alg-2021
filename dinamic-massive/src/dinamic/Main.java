@@ -9,8 +9,14 @@ public class Main {
         
         String[] mass = new String[] {"1","2","3"};
         
-        for(int i=0; i < mass.length+1; i++) {
-            System.out.println(mass[i]);
+        DinamicMassive dm = new DinamicMassive(0);
+        
+        for(int i=0; i < mass.length; i++) {
+            dm.add(mass[i]);
+        }
+        
+        for(int i=0; i < dm.getSize(); i++) {
+            System.out.println(dm.get(i));
         }
     }
     
