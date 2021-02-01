@@ -5,23 +5,23 @@ package lecstack;
 
 public class LStack {
     
-    private int[] values;
+    private Object[] values;
     private int index;
 
     public LStack(int size) {
         index = -1;
-        values = new int[size];
+        values = new Object[size];
     }
     
-    public void push(int value) {
+    public void push(Object value) {
         values[++index] = value;
     }
     
-    public int pop() {
+    public Object pop() {
         return values[index--];
     }
     
-    public int peek() {
+    public Object peek() {
         return values[index];
     }
     

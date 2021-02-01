@@ -10,10 +10,15 @@ public class LecStack {
         LStack stack = new LStack(10);
         
         for(int i=0; i<10; i++) {
-            stack.push(i);
+            if(i % 2 == 0) {
+                stack.push("~"+Integer.toString(i));
+            } else {
+                stack.push(i);
+            }
         }
         
-        while (!stack.isEmpty()) {            
+        while (!stack.isEmpty()) {
+            
             System.out.println(stack.pop());
         }
         
