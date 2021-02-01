@@ -2,26 +2,28 @@
 
 package lecstack;
 
+import java.lang.reflect.Array;
 
-public class LStack {
+
+public class LStack <T> {
     
-    private Object[] values;
+    private T[] values;
     private int index;
 
     public LStack(int size) {
         index = -1;
-        values = new Object[size];
+        values = (T[]) new Object[size];
     }
     
-    public void push(Object value) {
+    public void push(T value) {
         values[++index] = value;
     }
     
-    public Object pop() {
+    public T pop() {
         return values[index--];
     }
     
-    public Object peek() {
+    public T peek() {
         return values[index];
     }
     
