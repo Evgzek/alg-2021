@@ -11,7 +11,7 @@ public class LQueue<T> {
     public LQueue(int size) {
         index = -1;
         front = 0;
-        values = (T[]) new Object[size];
+        values = (T[]) new Object[size+1];
     }
     
     public void insert(T value) {
@@ -34,10 +34,18 @@ public class LQueue<T> {
     }
     
     public boolean isEmpty() {
-        return false;
+        return front == index+1 || front == index + 1 - values.length;
     }
     
     public boolean isFull() {
-        return false;
+        return front == index+2 || front == index+2 - values.length;
+    }
+
+    public int size() {
+        if(index+1 >= front) {
+            return index - front+1;
+        } else {
+            return values.length+index-front+1;
+        }
     }
 }
