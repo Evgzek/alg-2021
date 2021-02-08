@@ -8,6 +8,9 @@ public class LecListItem {
     private Object value;
     private LecListItem next;
 
+    public LecListItem(Object value) {
+        this.value = value;
+    }
 
     public Object getValue() {
         return value;
