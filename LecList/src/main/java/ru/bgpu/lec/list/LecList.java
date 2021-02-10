@@ -94,4 +94,41 @@ public class LecList {
         }
     }
 
+    public Object removeFirst() {
+        if(first != null) {
+            Object value = first.getValue();
+            first = first.getNext();
+            if(first == null) {
+                last = null;
+            }
+            size--;
+            return value;
+        }
+        return null;
+    }
+
+    public Object removeLast() {
+        if(last != null) {
+            Object value = last.getValue();
+            if(first.getNext() != null) {
+                LecListItem current = first;
+                while (current.getNext() != last) {
+                    current = current.getNext();
+                }
+                last = current;
+                current.setNext(null);
+            } else {
+                last = null;
+                first = null;
+            }
+            size--;
+            return value;
+        }
+        return null;
+    }
+
+    public Object removeByIndex() {
+        return null;
+    }
+
 }

@@ -12,6 +12,11 @@ public class Main {
         list.addLast(3);
         list.addFirst("0");
         list.addByIndex(10,1);
+
+        list.removeLast();
+        list.removeLast();
+        list.removeFirst();
+
         System.out.println(list);
         System.out.println("by index (1): "+list.getByIndex(1));
     }
