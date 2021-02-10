@@ -48,4 +48,30 @@ public class LecList {
         }
         return out+"]";
     }
+
+    public Object getFirst() {
+        if(first != null) {
+            return first.getValue();
+        }
+        return null;
+    }
+
+    public Object getLast() {
+        if(first != null) {
+            return first.getValue();
+        }
+        return null;
+    }
+
+    public Object getByIndex(int index) {
+        if(index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        LecListItem current = first;
+        int currentIndex = 0;
+        while (current != null && currentIndex++ < index) {
+            current = current.getNext();
+        }
+        return current.getValue();
+    }
 }
