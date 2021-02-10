@@ -74,4 +74,24 @@ public class LecList {
         }
         return current.getValue();
     }
+
+    public void addByIndex(Object value, int index) {
+        if(index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        LecListItem current = first;
+        int currentIndex = 0;
+        while (current != null && currentIndex++ < index-1) {
+            current = current.getNext();
+        }
+        if(current == null) {
+            addLast(value);
+        } else {
+            LecListItem item = new LecListItem(value);
+            item.setNext(current.getNext());
+            current.setNext(item);
+            size++;
+        }
+    }
+
 }
