@@ -31,4 +31,4 @@
 * Вывод массива должен быть реализован по примеру представленному в комментарии класса [RockExample][3].
 * Возможности скалолаза задаются из консоли.
 
-[3]: src/main/java/ru/bgpu/task/arrays/PlayingCard.java
+[3]: src/main/java/ru/bgpu/task/arrays/RockExample.java
