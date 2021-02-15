@@ -4,3 +4,5 @@
 /LeckQueue/nbproject/private/
 /LeckQueue/build/
 /LecList/target/
+*.idea/
+*.iml
