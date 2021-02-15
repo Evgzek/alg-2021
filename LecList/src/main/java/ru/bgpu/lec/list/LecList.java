@@ -2,10 +2,40 @@
 
 package ru.bgpu.lec.list;
 
-public class LecList {
+import java.util.Iterator;
+
+public class LecList implements Iterable {
+
+    public class LecListIterator implements Iterator {
+
+        LecListItem current = null;
+
+        public LecListIterator(LecListItem current) {
+            this.current = current;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Object next() {
+            Object value = current.getValue();
+            current = current.getNext();
+            return value;
+        }
+
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new LecListIterator(first);
+    }
 
     private LecListItem first = null;
     private LecListItem last = null;
+
     private int size = 0;
 
     public void addFirst(Object value) {
@@ -34,6 +64,7 @@ public class LecList {
     public int getSize() {
         return size;
     }
+
 
     @Override
     public String toString() {

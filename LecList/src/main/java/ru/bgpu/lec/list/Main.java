@@ -2,6 +2,8 @@
 
 package ru.bgpu.lec.list;
 
+import java.util.Iterator;
+
 public class Main {
     
     public static void main(String[] args) {
@@ -32,5 +34,14 @@ public class Main {
         list.visit(value -> System.out.println(value));
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
         list.visit(System.out::println);
+        System.out.println("**************************");
+        Iterator iterator = list.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+        System.out.println("**************************");
+        for(Object value: list) {
+            System.out.println(value);
+        }
     }
 }
