@@ -16,7 +16,21 @@ public class Main {
             System.out.println(list.getByIndex(i));
         }
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        Printer printer = new Printer();
-        list.visit(printer);
+        list.visit(new Printer());
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        list.visit(new Visitor() {
+            @Override
+            public void visit(Object value) {
+                System.out.println(value);
+            }
+        });
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        list.visit(value -> {
+            System.out.println(value);
+        });
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        list.visit(value -> System.out.println(value));
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        list.visit(System.out::println);
     }
 }
