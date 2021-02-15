@@ -49,6 +49,14 @@ public class LecList {
         return out+"]";
     }
 
+    public void visit(Visitor visitor) {
+        LecListItem current = first;
+        while (current != null) {
+            visitor.visit(current.getValue());
+            current = current.getNext();
+        }
+    }
+
     public Object getFirst() {
         if(first != null) {
             return first.getValue();
