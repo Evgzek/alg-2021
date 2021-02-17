@@ -23,10 +23,12 @@ public class Ball {
     }
 
     public void paint(Graphics g) {
-        g.setColor(color.brighter());
+        g.setColor(color);
         g.fillOval(x,y,r,r);
-        g.setColor(color.darker());
-        g.fillOval(x,y,r,r);
+        g.setColor(new Color(
+                color.getRed(), color.getGreen(), color.getBlue()
+        ));
+        g.drawOval(x,y,r,r);
     }
 
     public void move(int tx, int ty) {

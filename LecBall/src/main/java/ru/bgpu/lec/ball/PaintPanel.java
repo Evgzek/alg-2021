@@ -4,13 +4,10 @@ import ru.bgpu.lec.list.LecList;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.util.Random;
 
-public class PaintPanel extends JPanel implements ActionListener, MouseMotionListener {
+public class PaintPanel extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
 
     private Timer timer = new Timer(40, this);
     private LecList list = new LecList();
@@ -19,17 +16,22 @@ public class PaintPanel extends JPanel implements ActionListener, MouseMotionLis
     private int tx;
     private int ty;
 
+    private boolean background = true;
+
     public PaintPanel() {
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(600,600));
         tx = 300; ty = 300;
         addMouseMotionListener(this);
+        addMouseListener(this);
         timer.start();
     }
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
+        if(background) {
+            super.paint(g);
+        }
         for(Object ball: list) {
             ((Ball)ball).paint(g);
         }
@@ -46,11 +48,11 @@ public class PaintPanel extends JPanel implements ActionListener, MouseMotionLis
     @Override
     public void mouseDragged(MouseEvent e) {
         Random random = new Random();
-        int r = random.nextInt(10)+20;
+        int r = random.nextInt(10)+30;
         list.addFirst(
                 new Ball(
-                     e.getX()+r/2,
-                     e.getY()+r/2,
+                     e.getX()-r/2,
+                     e.getY()-r/2,
                      r,
                      new Color(
                              e.getX() % 256,
@@ -66,5 +68,30 @@ public class PaintPanel extends JPanel implements ActionListener, MouseMotionLis
     public void mouseMoved(MouseEvent e) {
         tx = e.getX();
         ty = e.getY();
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        background = !background;
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
