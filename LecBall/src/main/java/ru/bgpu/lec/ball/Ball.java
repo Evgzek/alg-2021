@@ -1,15 +1,19 @@
 package ru.bgpu.lec.ball;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Ball {
 
     private int x;
     private int y;
+    private int dx;
+    private int dy;
 
     private int r;
 
     private Color color;
+    private Random random = new Random();
 
     public Ball(int x, int y, int r, Color color) {
         this.x = x;
@@ -27,15 +31,19 @@ public class Ball {
 
     public void move(int tx, int ty) {
         if(x < tx) {
-            x += 10;
+            dx += random.nextInt(3);
         } else {
-            x -= 10;
+            dx -= random.nextInt(3);
         }
         if(y < ty) {
-            y += 10;
+            dy += random.nextInt(3);
         } else {
-            y -= 10;
+            dy -= random.nextInt(3);
         }
+        if(dx > 10) dx = 10;
+        if(dy > 10) dy = 10;
+        x = x + dx;
+        y = y + dy;
     }
 
     public int getX() {
