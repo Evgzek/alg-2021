@@ -2,26 +2,26 @@ package ru.bgpu.lec.tree;
 
 public class LecTreeNode {
 
-    private Object value;
+    private Comparable value;
 
     private LecTreeNode left = null;
     private LecTreeNode right = null;
 
-    public LecTreeNode(Object value) {
+    public LecTreeNode(Comparable value) {
         this.value = value;
     }
 
-    public LecTreeNode(Object value, LecTreeNode left, LecTreeNode right) {
+    public LecTreeNode(Comparable value, LecTreeNode left, LecTreeNode right) {
         this.value = value;
         this.left = left;
         this.right = right;
     }
 
-    public Object getValue() {
+    public Comparable getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
+    public void setValue(Comparable value) {
         this.value = value;
     }
 

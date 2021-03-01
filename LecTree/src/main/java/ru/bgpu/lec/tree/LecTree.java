@@ -30,4 +30,23 @@ public class LecTree {
                 height(node.getRight())
         );
     }
+
+    public void add(Comparable value) {
+        LecTreeNode node = new LecTreeNode(value);
+        if(root == null) {
+            root = node;
+        } else {
+            LecTreeNode parent = root;
+            LecTreeNode current = root;
+            while (true) {
+                if(current.getValue().compareTo(value) < 0) {
+                    current = current.getLeft();
+
+                } else {
+                    current = current.getRight();
+
+                }
+            }
+        }
+    }
 }
