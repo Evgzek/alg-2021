@@ -9,6 +9,8 @@ public class LecTree {
         this.root = root;
     }
 
+    public LecTree() {}
+
     public LecTreeNode getRoot() {
         return root;
     }
@@ -36,17 +38,66 @@ public class LecTree {
         if(root == null) {
             root = node;
         } else {
-            LecTreeNode parent = root;
+            LecTreeNode parent;
             LecTreeNode current = root;
             while (true) {
-                if(current.getValue().compareTo(value) < 0) {
+                parent = current;
+                if(current.getValue().compareTo(value) > 0) {
                     current = current.getLeft();
-
+                    if(current == null) {
+                        parent.setLeft(node);
+                        return;
+                    }
                 } else {
                     current = current.getRight();
-
+                    if(current == null) {
+                        parent.setRight(node);
+                        return;
+                    }
                 }
             }
         }
+    }
+
+    public void visitByLevel(Visitor visitor, int level) {
+        visitByLevel(visitor,level,root,1);
+    }
+
+    private void visitByLevel(Visitor visitor, int level, LecTreeNode node, int cl) {
+        if(cl == level) {
+            Object value = node != null ? node.getValue() : null;
+            visitor.visit(value);
+        } else {
+            visitByLevel(visitor,level,
+                    node != null ? node.getLeft() : null, cl+1
+            );
+            visitByLevel(visitor,level,
+                    node != null ? node.getRight() : null, cl+1
+            );
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder out = new StringBuilder();
+        int height = height();
+        for(int l=1; l <= height; l++) {
+            int bCount = (int) Math.pow(2,(height-l));
+            visitByLevel(
+                    (value) -> {
+                        for(int i =0; i < bCount; i++) {
+                            out.append(" ");
+                        }
+                        if(value != null) {
+                            out.append(value);
+                        } else {
+                            out.append("--");
+                        }
+                    },
+                    l
+            );
+            out.append("\n");
+        }
+        return out.toString();
     }
 }

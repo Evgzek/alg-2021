@@ -1,18 +1,16 @@
 package ru.bgpu.lec.tree;
 
+import java.util.Random;
+
 public class Main {
 
     public static void main(String[] args) {
-        LecTree tree = new LecTree(new LecTreeNode(1,
-                new LecTreeNode(2,
-                        new LecTreeNode(4),
-                        new LecTreeNode(5,
-                                null,
-                                new LecTreeNode(6)
-                        )
-                ),
-                new LecTreeNode(3)
-        ));
+        LecTree tree = new LecTree();
+        Random random = new Random();
+        for(int i=0; i<10; i++) {
+            tree.add(random.nextInt(100));
+        }
         System.out.println(tree.height());
+        System.out.println(tree);
     }
 }
