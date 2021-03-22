@@ -77,6 +77,18 @@ public class LecTree {
         }
     }
 
+    public void visit(Visitor visitor) {
+        visit(visitor,root);
+    }
+
+    public void visit(Visitor visitor, LecTreeNode node) {
+        if(node != null) {
+            visit(visitor, node.getLeft());
+            visitor.visit(node.getValue());
+            visit(visitor, node.getRight());
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
