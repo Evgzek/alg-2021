@@ -82,7 +82,7 @@ public class LecTree {
         StringBuilder out = new StringBuilder();
         int height = height();
         for(int l=1; l <= height; l++) {
-            int bCount = (int) Math.pow(2,(height-l));
+            int bCount = (int) (Math.pow(2,(height+1)) / Math.pow(2,l-2));
             visitByLevel(
                     (value) -> {
                         for(int i =0; i < bCount; i++) {
